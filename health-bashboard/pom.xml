@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>health-client</artifactId>
+    <artifactId>health-dashboard</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
@@ -72,13 +72,13 @@
     </dependencyManagement>
 
     <build>
-        <finalName>midware-health-client</finalName>
+        <finalName>midware-health-dashboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>cloud.dispatcher.midware.health.client.Application</mainClass>
+                    <mainClass>cloud.dispatcher.midware.health.dashboard.Application</mainClass>
                 </configuration>
             </plugin>
             <plugin>
