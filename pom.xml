@@ -16,7 +16,7 @@
     </parent>
 
     <modules>
-        <module>health-bashboard</module>
+        <module>health-dashboard</module>
         <module>health-client</module>
     </modules>
 
