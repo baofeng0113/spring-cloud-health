@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import cloud.dispatcher.base.framework.utils.CodecUtil;
-
 @Component
 public class ComponentMetricsInfoPublish {
 
@@ -20,7 +18,7 @@ public class ComponentMetricsInfoPublish {
 
     @SuppressWarnings("unchecked")
     public void publishMetricsInfo(String serviceId, Map<String, Object> metrics) {
-        kafkaTemplate.send(kafkaTopic, CodecUtil.JSON.encode(metrics)).addCallback(
+        kafkaTemplate.send(kafkaTopic, metrics).addCallback(
                 s -> LOGGER.info("Publish metrics info success, serviceId: {}", serviceId),
                 f -> LOGGER.warn("Publish metrics info failure, serviceId: {}", serviceId)
         );

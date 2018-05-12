@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
@@ -19,10 +19,10 @@ public class ComponentInstancesDiscovery {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ComponentInstancesDiscovery.class);
 
-    @Autowired private DiscoveryClient discoveryClient;
+    @Autowired private EurekaDiscoveryClient eurekaDiscoveryClient;
 
     public List<ServiceInstance> getLocalizeInstanceList() {
-        List<String> serviceIdListOnDiscovery = discoveryClient.getServices();
+        List<String> serviceIdListOnDiscovery = eurekaDiscoveryClient.getServices();
         if (serviceIdListOnDiscovery.isEmpty()) {
             return Collections.emptyList();
         }
@@ -30,7 +30,7 @@ public class ComponentInstancesDiscovery {
         List<ServiceInstance> localizeInstanceList = Lists.newArrayList();
 
         for (String serviceId : serviceIdListOnDiscovery) {
-            List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances(serviceId);
+            List<ServiceInstance> serviceInstanceList = eurekaDiscoveryClient.getInstances(serviceId);
             if (!serviceInstanceList.isEmpty()) {
                 serviceInstanceList.forEach(serviceInstance -> {
                     if (serviceInstance.getHost().equals(LocalizeEnvUtil.getMachineIpv4Address())) {
