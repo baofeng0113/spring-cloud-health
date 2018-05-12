@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 @Component
 public class ComponentMetricsInfoMonitor {
@@ -30,7 +29,9 @@ public class ComponentMetricsInfoMonitor {
         } else {
             instanceList.forEach(item -> {
                 Map<String, Object> metrics = componentMetricsInfoCapture.captureMetricsInfo(item);
-                if (!CollectionUtils.isEmpty(metrics)) {
+                if (!metrics.isEmpty()) {
+                    LOGGER.info("Collect metrics completed, id: {}, host: {}, port: {}",
+                            item.getServiceId(), item.getHost(), item.getPort());
                     componentMetricsInfoPublish.publishMetricsInfo(item.getServiceId(), metrics);
                 }
             });

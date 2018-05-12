@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
@@ -19,7 +19,7 @@ public class ComponentInstancesDiscovery {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ComponentInstancesDiscovery.class);
 
-    @Autowired private EurekaDiscoveryClient eurekaDiscoveryClient;
+    @Autowired private DiscoveryClient eurekaDiscoveryClient;
 
     public List<ServiceInstance> getLocalizeInstanceList() {
         List<String> serviceIdListOnDiscovery = eurekaDiscoveryClient.getServices();
