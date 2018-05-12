@@ -31,7 +31,7 @@ public class ComponentMetricsInfoMonitor {
             instanceList.forEach(item -> {
                 Map<String, Object> metrics = componentMetricsInfoCapture.captureMetricsInfo(item);
                 if (!CollectionUtils.isEmpty(metrics)) {
-                    componentMetricsInfoPublish.publisMetricsInfo(metrics);
+                    componentMetricsInfoPublish.publishMetricsInfo(metrics);
                 }
             });
         }
