@@ -74,7 +74,7 @@ public class ComponentMetricsInfoCapture implements InitializingBean {
 
             metricsMap.put(type.name().toLowerCase(), CodecUtil.JSON.decode(responseBody, Map.class));
         } catch (IOException e) {
-            LOGGER.warn(e.getMessage(), e);
+            LOGGER.warn("{}: {}", uri + type.getPath(), e.getMessage());
         }
     }
 }
