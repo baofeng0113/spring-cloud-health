@@ -76,7 +76,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>midware-health-dashboard</finalName>
+        <finalName>health-dashboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
