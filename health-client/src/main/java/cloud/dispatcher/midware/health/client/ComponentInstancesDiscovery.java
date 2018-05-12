@@ -40,6 +40,8 @@ public class ComponentInstancesDiscovery {
             }
         }
 
+        LOGGER.debug("Fetch local instances success, instances: {}", localizeInstanceList);
+
         return localizeInstanceList;
     }
 }

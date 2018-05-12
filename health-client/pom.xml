@@ -76,7 +76,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>midware-health-client</finalName>
+        <finalName>health-client</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

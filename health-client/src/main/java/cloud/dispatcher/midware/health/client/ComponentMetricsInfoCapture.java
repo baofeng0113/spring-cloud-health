@@ -47,6 +47,8 @@ public class ComponentMetricsInfoCapture implements InitializingBean {
         for (MetricsInfoType type : MetricsInfoType.values()) {
             putMetricsInfoIntoMap(type, uri, metricsMap);
         }
+
+        LOGGER.debug("Capture metrics info completed, data: {}", metricsMap);
         return metricsMap;
     }
 

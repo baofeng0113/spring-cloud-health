@@ -26,5 +26,5 @@ public class ComponentMetricsInfoPublish {
         );
     }
 
-    @Autowired private KafkaTemplate kafkaTemplate;
+    @Autowired private KafkaTemplate<String, String> kafkaTemplate;
 }
