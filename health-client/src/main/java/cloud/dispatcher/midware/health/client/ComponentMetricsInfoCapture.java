@@ -1,6 +1,7 @@
 package cloud.dispatcher.midware.health.client;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,7 @@ public class ComponentMetricsInfoCapture implements InitializingBean {
 
     private static final String APPLICATION_PORT = "application.port";
 
-    private static final String CREATE_TIME = "create_time";
+    private static final String CREATE_TIME = "time";
 
     private static final String LOCALHOST_DOMAIN = "localhost.localdomain";
 
@@ -56,10 +57,10 @@ public class ComponentMetricsInfoCapture implements InitializingBean {
 
     private Map<String, Object> buildMetricsInfoMap(EurekaDiscoveryClient.EurekaServiceInstance instance) {
         Map<String, Object> metricsInfoMap = new HashMap<>();
-        metricsInfoMap.put(CREATE_TIME, System.currentTimeMillis());
         metricsInfoMap.put(APPLICATION_NAME, instance.getInstanceInfo().getAppName());
         metricsInfoMap.put(APPLICATION_HOST, instance.getHost());
         metricsInfoMap.put(APPLICATION_PORT, instance.getPort());
+        metricsInfoMap.put(CREATE_TIME, new Date());
         return metricsInfoMap;
     }
 
