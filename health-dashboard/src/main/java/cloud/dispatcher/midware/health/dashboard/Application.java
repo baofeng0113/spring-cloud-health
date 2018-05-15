@@ -13,6 +13,8 @@ import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
+import cloud.dispatcher.base.framework.context.ApplicationContextListener;
+
 @ImportResource("aspect.xml")
 @SpringCloudApplication
 public class Application {
@@ -20,6 +22,11 @@ public class Application {
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
     @Autowired public MongoMappingContext mongoMappingContext;
+
+    @Bean
+    public ApplicationContextListener getApplicationContextListener() {
+        return new ApplicationContextListener();
+    }
 
     @Bean
     public MappingMongoConverter mongoConverter() throws Exception {
