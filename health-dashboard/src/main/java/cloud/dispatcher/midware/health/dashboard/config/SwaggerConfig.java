@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class SwaggerConfig {
 
-    private static final String BASE_PACKAGE = "cloud.dispatcher.midware.health.dashboard.web";
+    private static final String BASE_PACKAGE = GlobalConfigValue.REST_CONTROLLER_BASE_PACKAGE;
 
     @Bean
     public Docket docket() {

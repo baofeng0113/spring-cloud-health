@@ -1,4 +1,4 @@
-package cloud.dispatcher.midware.health.dashboard.web;
+package cloud.dispatcher.midware.health.dashboard.web.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cloud.dispatcher.base.framework.entry.rest.RestDataResponse;
 import cloud.dispatcher.base.framework.entry.rest.RestMetaResponse;
 import cloud.dispatcher.base.framework.error.CheckedException;
+import cloud.dispatcher.midware.health.dashboard.config.GlobalConfigValue;
 
-@ControllerAdvice
+@ControllerAdvice(GlobalConfigValue.REST_CONTROLLER_BASE_PACKAGE)
 public class ControllerExceptionAdvice {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerExceptionAdvice.class);
