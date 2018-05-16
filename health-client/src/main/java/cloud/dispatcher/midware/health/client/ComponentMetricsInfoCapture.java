@@ -60,7 +60,7 @@ public class ComponentMetricsInfoCapture implements InitializingBean {
         metricsInfoMap.put(APPLICATION_NAME, instance.getInstanceInfo().getAppName());
         metricsInfoMap.put(APPLICATION_HOST, instance.getHost());
         metricsInfoMap.put(APPLICATION_PORT, instance.getPort());
-        metricsInfoMap.put(CREATE_TIME, new Date());
+        metricsInfoMap.put(CREATE_TIME, System.currentTimeMillis());
         return metricsInfoMap;
     }
 
