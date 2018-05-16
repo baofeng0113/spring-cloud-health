@@ -1,5 +1,6 @@
 package cloud.dispatcher.midware.health.dashboard;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 import cloud.dispatcher.base.framework.context.ApplicationContextListener;
+import cloud.dispatcher.base.framework.error.CheckedException;
+import cloud.dispatcher.base.framework.error.DefaultExceptionMessage;
+import cloud.dispatcher.midware.health.dashboard.config.GlobalConfigValue;
 
 @ImportResource("aspect.xml")
 @SpringCloudApplication
@@ -31,11 +35,23 @@ public class Application {
     @Bean
     public MappingMongoConverter mongoConverter() throws Exception {
         DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDbFactory);
-        MappingMongoConverter mappingMongoConverter = new MappingMongoConverter(
-                dbRefResolver, mongoMappingContext);
+        MappingMongoConverter mappingMongoConverter = new MappingMongoConverter(dbRefResolver, mongoMappingContext);
         mappingMongoConverter.setMapKeyDotReplacement("_");
         mappingMongoConverter.afterPropertiesSet();
         return mappingMongoConverter;
+    }
+
+    public static String getCollectionName(String applicationName) {
+        if (StringUtils.isBlank(applicationName)) {
+            throw new CheckedException(DefaultExceptionMessage.ILLEGAL_ARGUMENT, "applicationName", applicationName);
+        }
+
+        int startWith = applicationName.toLowerCase().charAt(0);
+        if (startWith < 97 || startWith > 122) {
+            throw new CheckedException(DefaultExceptionMessage.ILLEGAL_ARGUMENT, "applicationName", applicationName);
+        }
+
+        return GlobalConfigValue.MONGO_COLLECTION_NAME_PREFIX + (char) startWith;
     }
 
     public static void main(String[] args) {

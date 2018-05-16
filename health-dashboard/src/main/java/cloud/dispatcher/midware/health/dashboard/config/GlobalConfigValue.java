@@ -8,9 +8,15 @@ public final class GlobalConfigValue {
 
     public static final String METRICS_APPLICATION_NAME = "application.name";
 
+    public static final String METRICS_APPLICATION_NAME_CONVERTED = "application_name";
+
     public static final String METRICS_APPLICATION_HOST = "application.host";
 
+    public static final String METRICS_APPLICATION_HOST_CONVERTED = "application_host";
+
     public static final String METRICS_APPLICATION_PORT = "application.port";
+
+    public static final String METRICS_APPLICATION_PORT_CONVERTED = "application_port";
 
     public static final String METRICS_CREATE_TIME = "time";
 

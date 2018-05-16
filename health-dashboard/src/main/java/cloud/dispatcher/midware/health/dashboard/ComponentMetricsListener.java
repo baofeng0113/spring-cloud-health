@@ -33,7 +33,8 @@ public class ComponentMetricsListener {
             throw new CheckedException(DefaultExceptionMessage.ILLEGAL_ARGUMENT, "payload", payload);
         }
 
-        mongoTemplate.insert(metrics, collectionName(metrics.get(GlobalConfigValue.METRICS_APPLICATION_NAME).toString()));
+        mongoTemplate.insert(metrics, Application.getCollectionName(metrics.get(
+                GlobalConfigValue.METRICS_APPLICATION_NAME).toString()));
 
         LOGGER.info("Save metrics payload success, time: {}, host: {}, port: {}, application: {}",
                 metrics.get(GlobalConfigValue.METRICS_CREATE_TIME),
@@ -46,18 +47,5 @@ public class ComponentMetricsListener {
     @SuppressWarnings("unchecked")
     private Map<String, Object> convertPayload(String payload) {
         return CodecUtil.JSON.decode(payload, Map.class);
-    }
-
-    private String collectionName(String applicationName) {
-        if (StringUtils.isBlank(applicationName)) {
-            throw new CheckedException(DefaultExceptionMessage.ILLEGAL_ARGUMENT, "applicationName", applicationName);
-        }
-
-        int startWith = applicationName.toLowerCase().charAt(0);
-        if (startWith < 97 || startWith > 122) {
-            throw new CheckedException(DefaultExceptionMessage.ILLEGAL_ARGUMENT, "applicationName", applicationName);
-        }
-
-        return GlobalConfigValue.MONGO_COLLECTION_NAME_PREFIX + (char) startWith;
     }
 }
