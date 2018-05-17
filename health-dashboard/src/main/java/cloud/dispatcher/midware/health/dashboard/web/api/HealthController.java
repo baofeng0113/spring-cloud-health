@@ -37,6 +37,7 @@ public class HealthController {
             @RequestParam("closeTimeMillis") long closeTimeMillis) {
         List<JsonNode> originalMetricsInfo = componentMetricsDataQuery.getMetricsDataList(
                 name, host, port, beginTimeMillis, closeTimeMillis);
+
         return CollectionUtils.isEmpty(originalMetricsInfo) ? newRestDataResponse(null) :
                 newRestDataResponse(componentMetricsTaxonomy.convert(originalMetricsInfo));
     }
