@@ -32,5 +32,7 @@ public class ComponentMetricsTaxonomy {
         @Getter @Setter private String applicationName;
 
         @Getter @Setter private String applicationHost;
+
+        @Getter @Setter private int applicationPort;
     }
 }
