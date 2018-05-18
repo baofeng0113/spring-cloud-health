@@ -29,10 +29,18 @@ public class ComponentMetricsTaxonomy {
     @ToString
     public static class MetricsTaxonomyModel implements Serializable {
 
+        public MetricsTaxonomyModel(String applicationName, String applicationHost, int applicationPort) {
+            this.applicationName = applicationName;
+            this.applicationHost = applicationHost;
+            this.applicationPort = applicationPort;
+        }
+
         @Getter @Setter private String applicationName;
 
         @Getter @Setter private String applicationHost;
 
         @Getter @Setter private int applicationPort;
+
+        @Getter @Setter private List<String> timeline;
     }
 }
