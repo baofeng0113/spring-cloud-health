@@ -20,7 +20,9 @@ public class ComponentMetricsTaxonomy {
     public MetricsTaxonomyModel convert(List<JsonNode> original) {
         if (CollectionUtils.isEmpty(original)) { return null; }
 
-        return null;
+        MetricsTaxonomyModel result = new MetricsTaxonomyModel();
+
+        return result;
     }
 
     @AllArgsConstructor
