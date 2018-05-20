@@ -13,9 +13,7 @@ public class MetricsTaxonomyResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Getter @Setter private List<String> timeline;
-
-    @Getter @Setter long pid;
+    @Getter @Setter String pid;
 
     @Getter @Setter private String applicationName;
 
@@ -25,11 +23,9 @@ public class MetricsTaxonomyResponse implements Serializable {
 
     @Getter @Setter private int processorNumber;
 
-    @Getter @Setter private long instanceUptime;
-
     @Getter @Setter private long uptime;
 
-    @Getter @Setter private String envProfile;
+    @Getter @Setter private long instanceUptime;
 
     @Getter @Setter private String jrtName;
 
@@ -94,4 +90,6 @@ public class MetricsTaxonomyResponse implements Serializable {
     @Getter @Setter private List<Long> httpSessionsMax;
 
     @Getter @Setter private List<Long> httpSessionsActive;
+
+    @Getter @Setter private List<String> timeline;
 }
