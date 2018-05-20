@@ -29,18 +29,18 @@ public class ComponentMetricsListener {
         }
 
         Map<String, Object> metrics = convertPayload(payload);
-        if (!metrics.containsKey(GlobalConfigValue.METRICS_APPLICATION_NAME)) {
+        if (!metrics.containsKey(GlobalConfigValue.METRICS_APP_NAME)) {
             throw new CheckedException(DefaultExceptionMessage.ILLEGAL_ARGUMENT, "payload", payload);
         }
 
         mongoTemplate.insert(metrics, Application.getCollectionName(metrics.get(
-                GlobalConfigValue.METRICS_APPLICATION_NAME).toString()));
+                GlobalConfigValue.METRICS_APP_NAME).toString()));
 
         LOGGER.info("Save metrics payload success, time: {}, host: {}, port: {}, application: {}",
                 metrics.get(GlobalConfigValue.METRICS_CREATE_TIME),
-                metrics.get(GlobalConfigValue.METRICS_APPLICATION_HOST),
-                metrics.get(GlobalConfigValue.METRICS_APPLICATION_PORT),
-                metrics.get(GlobalConfigValue.METRICS_APPLICATION_NAME)
+                metrics.get(GlobalConfigValue.METRICS_APP_HOST),
+                metrics.get(GlobalConfigValue.METRICS_APP_PORT),
+                metrics.get(GlobalConfigValue.METRICS_APP_NAME)
         );
     }
 
