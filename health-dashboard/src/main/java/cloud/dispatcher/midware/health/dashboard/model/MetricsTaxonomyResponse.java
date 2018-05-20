@@ -1,7 +1,11 @@
 package cloud.dispatcher.midware.health.dashboard.model;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
+
+import org.assertj.core.util.Lists;
 
 import lombok.*;
 
@@ -12,6 +16,18 @@ import lombok.*;
 public class MetricsTaxonomyResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public static MetricsTaxonomyResponse newInstance() throws InvocationTargetException, IllegalAccessException {
+
+        MetricsTaxonomyResponse instance = new MetricsTaxonomyResponse();
+        Method[] methods = instance.getClass().getMethods();
+        for (Method method : methods) {
+            if (method.getName().startsWith("set") && method.getParameterTypes()[0].isAssignableFrom(List.class)) {
+                method.invoke(instance, Lists.newArrayList());
+            }
+        }
+        return instance;
+    }
 
     @Getter @Setter String pid;
 
