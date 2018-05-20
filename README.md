@@ -1,1 +1,26 @@
-
+db.spring_cloud_health_a.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_b.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_c.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_d.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_e.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_f.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_g.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_h.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_i.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_j.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_k.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_l.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_m.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_n.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_o.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_p.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_q.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_r.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_s.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_t.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_u.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_v.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_w.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_x.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_y.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
+db.spring_cloud_health_z.ensureIndex({"application_name":1, "application_host":1, "application_port":1, "time":-1}, {"name":"idx_name_host_port_time"});
