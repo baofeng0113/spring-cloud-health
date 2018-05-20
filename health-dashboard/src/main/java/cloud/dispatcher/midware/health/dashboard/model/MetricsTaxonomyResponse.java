@@ -73,13 +73,13 @@ public class MetricsTaxonomyResponse implements Serializable {
 
     @Getter @Setter private List<Long> heapUsed;
 
-    @Getter @Setter private List<Long> noHeapAllotted;
+    @Getter @Setter private List<Long> nonHeapAllotted;
 
-    @Getter @Setter private List<Long> noHeapCommitted;
+    @Getter @Setter private List<Long> nonHeapCommitted;
 
-    @Getter @Setter private List<Long> noHeapInit;
+    @Getter @Setter private List<Long> nonHeapInit;
 
-    @Getter @Setter private List<Long> noHeapUsed;
+    @Getter @Setter private List<Long> nonHeapUsed;
 
     @Getter @Setter private List<Long> threadHistoryTotal;
 
