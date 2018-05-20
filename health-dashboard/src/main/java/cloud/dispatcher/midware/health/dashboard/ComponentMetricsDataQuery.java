@@ -24,14 +24,21 @@ public class ComponentMetricsDataQuery {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ComponentMetricsDataQuery.class);
 
+    private static final long INTERVAL_TIME_MILLIS_MAX = 1800000;
+
     @Autowired private MongoTemplate mongoTemplate;
 
     public List<JsonNode> getMetricsDataList(String name, String host, int port,
             long beginTimeMillis, long closeTimeMillis) {
+        if ((closeTimeMillis - beginTimeMillis) > INTERVAL_TIME_MILLIS_MAX) {
+            throw new IllegalArgumentException("CloseTimeMillis - beginTimeMillis must less than "
+                    + INTERVAL_TIME_MILLIS_MAX);
+        }
+
         Criteria criteria = new Criteria().andOperator(
-                Criteria.where(GlobalConfigValue.METRICS_APPLICATION_NAME_CONVERTED).is(name),
-                Criteria.where(GlobalConfigValue.METRICS_APPLICATION_HOST_CONVERTED).is(host),
-                Criteria.where(GlobalConfigValue.METRICS_APPLICATION_PORT_CONVERTED).is(port),
+                Criteria.where(GlobalConfigValue.METRICS_APP_NAME_CONVERTED).is(name),
+                Criteria.where(GlobalConfigValue.METRICS_APP_HOST_CONVERTED).is(host),
+                Criteria.where(GlobalConfigValue.METRICS_APP_PORT_CONVERTED).is(port),
                 Criteria.where(GlobalConfigValue.METRICS_CREATE_TIME).gte(beginTimeMillis),
                 Criteria.where(GlobalConfigValue.METRICS_CREATE_TIME).lte(closeTimeMillis)
         );
