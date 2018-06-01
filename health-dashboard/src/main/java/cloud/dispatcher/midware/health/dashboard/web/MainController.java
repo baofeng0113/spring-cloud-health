@@ -16,9 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDiscovery;
 
 @Controller
-public class IndexController {
+public class MainController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
     @Autowired private ComponentMetricsDiscovery componentMetricsDiscovery;
 
