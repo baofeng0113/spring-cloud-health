@@ -1,5 +1,7 @@
-body { background-color: #111111; }
+body { background-color: #252525; }
+
 
 .header {
     background-color: #252525;
+    height: 50px;
 }

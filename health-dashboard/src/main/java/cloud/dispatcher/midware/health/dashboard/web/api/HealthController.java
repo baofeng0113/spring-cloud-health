@@ -31,7 +31,7 @@ public class HealthController {
     }
 
     @RequestMapping(value = "/health", method = RequestMethod.GET)
-    public RestDataResponse getHealthInfoAction(@RequestParam("name") String name,
+    public RestDataResponse healthAction(@RequestParam("name") String name,
             @RequestParam("host") String host, @RequestParam("port") int port,
             @RequestParam("beginTimeMillis") long beginTimeMillis,
             @RequestParam("closeTimeMillis") long closeTimeMillis) {

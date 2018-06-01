@@ -5,13 +5,11 @@
         <meta name="viewport" content="initial-scale=1">
         <meta name="viewport" content="user-scalable=no">
         <meta charset="utf-8">
-        <title>Spring Cloud Health</title>
-        <link rel="stylesheet" href="/static/assets/spring-cloud-health.css">
-        <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
-        <script src="/static/assets/jquery.min.js"></script>
+        <link rel="stylesheet" href="/static/assets/spring-cloud-health.css">
+        <script src="/static/assets/jquery/jquery.min.js"></script>
         <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/static/assets/echarts.min.js"></script>
+        <script src="/static/assets/echarts/echarts.min.js"></script>
     </head>
     <body>
         <div id="cont">
@@ -19,7 +17,7 @@
                 <ul class="nav nav-pills">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Dropdown
+                            ${selected?upper_case}
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
