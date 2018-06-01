@@ -2,13 +2,14 @@ package cloud.dispatcher.midware.health.dashboard.web;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDiscovery;
@@ -21,7 +22,8 @@ public class IndexController {
     @Autowired private ComponentMetricsDiscovery componentMetricsDiscovery;
 
     @RequestMapping(value = {"/", "/index", "/index.action", "/index.html"})
-    public ModelAndView indexAction(ModelAndView modelAndView, @RequestParam("service") String selected) {
+    public ModelAndView indexAction(ModelAndView modelAndView, ServletRequest request) {
+        String selected = request.getParameter("service");
         List<String> serviceIdList = componentMetricsDiscovery.getServiceIdList();
         if (StringUtils.isBlank(selected) || !serviceIdList.contains(selected)) {
             modelAndView.addObject("selected", serviceIdList.isEmpty() ? "" : serviceIdList.get(0));

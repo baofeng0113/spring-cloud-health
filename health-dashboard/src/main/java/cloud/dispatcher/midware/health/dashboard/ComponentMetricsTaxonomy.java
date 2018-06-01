@@ -69,6 +69,7 @@ public class ComponentMetricsTaxonomy {
         JsonNode uptime = getJsonNodeByPath(lastNode, MetricsPathConfig.UPTIME);
         JsonNode pid = getJsonNodeByPath(lastNode, MetricsPathConfig.PID);
         JsonNode processorNumber = getJsonNodeByPath(lastNode, MetricsPathConfig.PROCESSOR_NUMBER);
+        JsonNode status = getJsonNodeByPath(lastNode, MetricsPathConfig.STATUS);
         JsonNode jvmVersion = getJsonNodeByPath(lastNode, MetricsPathConfig.JVM_VERSION);
         JsonNode jrtVersion = getJsonNodeByPath(lastNode, MetricsPathConfig.JRT_VERSION);
         JsonNode jvmName = getJsonNodeByPath(lastNode, MetricsPathConfig.JVM_NAME);
@@ -84,6 +85,7 @@ public class ComponentMetricsTaxonomy {
         response.setUptime(Objects.isNull(uptime) ? -1 : uptime.longValue());
         response.setProcessorNumber(Objects.isNull(processorNumber) ? -1 : processorNumber.intValue());
         response.setPid(Objects.isNull(pid) ? StringUtils.EMPTY : pid.textValue());
+        response.setStatus(Objects.isNull(status) ? StringUtils.EMPTY : status.textValue());
     }
 
     private void setArrayDataNode(final JsonNode jsonNode, final MetricsTaxonomyResponse response) {

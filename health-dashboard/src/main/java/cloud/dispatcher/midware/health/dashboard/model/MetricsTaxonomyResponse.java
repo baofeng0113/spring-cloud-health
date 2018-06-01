@@ -29,8 +29,6 @@ public class MetricsTaxonomyResponse implements Serializable {
         return instance;
     }
 
-    @Getter @Setter String pid;
-
     @Getter @Setter private String applicationName;
 
     @Getter @Setter private String applicationHost;
@@ -42,6 +40,10 @@ public class MetricsTaxonomyResponse implements Serializable {
     @Getter @Setter private long uptime;
 
     @Getter @Setter private long instanceUptime;
+
+    @Getter @Setter private String status;
+
+    @Getter @Setter private String pid;
 
     @Getter @Setter private String jrtName;
 

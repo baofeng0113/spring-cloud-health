@@ -7,6 +7,7 @@ public final class MetricsPathConfig {
     public static final String[] INSTANCE_UPTIME = new String[]{"metrics", "instance_uptime"};
     public static final String[] UPTIME = new String[]{"metrics", "uptime"};
     public static final String[] PROCESSOR_NUMBER = new String[]{"metrics", "processors"};
+    public static final String[] STATUS = new String[]{"health", "status"};
     public static final String[] PID = new String[]{"env", "systemProperties", "PID"};
 
     public static final String[] JVM_VERSION = new String[]{"env", "systemProperties", "java_vm_version"};
