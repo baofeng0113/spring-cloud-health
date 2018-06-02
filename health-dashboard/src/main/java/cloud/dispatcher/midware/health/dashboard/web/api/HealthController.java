@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.common.collect.Lists;
 
 import cloud.dispatcher.base.framework.entry.rest.RestDataResponse;
 import cloud.dispatcher.base.framework.entry.rest.RestMetaResponse;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDataQuery;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDiscovery;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsTaxonomy;
+import cloud.dispatcher.midware.health.dashboard.model.MetricsInstanceNodeResponse;
 
 @RequestMapping("/api")
 @RestController
@@ -36,7 +39,13 @@ public class HealthController {
 
     @RequestMapping(value = "/instanceList", method = RequestMethod.GET)
     public RestDataResponse instanceListAction(@RequestParam("service") String service) {
-        return newRestDataResponse(componentMetricsDiscovery.getInstanceList(service));
+        List<ServiceInstance> instanceList = componentMetricsDiscovery.getInstanceList(service);
+        List<MetricsInstanceNodeResponse> result = Lists.newArrayList();
+        if (!CollectionUtils.isEmpty(instanceList)) {
+            instanceList.forEach(item -> result.add(new MetricsInstanceNodeResponse(
+                    item.getServiceId(), item.getPort(), item.getHost())));
+        }
+        return newRestDataResponse(result);
     }
 
     @RequestMapping(value = "/health", method = RequestMethod.GET)
