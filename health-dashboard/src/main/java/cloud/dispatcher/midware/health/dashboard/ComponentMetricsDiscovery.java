@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -25,5 +26,10 @@ public class ComponentMetricsDiscovery {
             Collections.sort(serviceIdList, String::compareTo);
             return serviceIdList;
         }
+    }
+
+    public List<ServiceInstance> getInstanceList(String serviceId) {
+        List<ServiceInstance> result = discoveryClient.getInstances(serviceId);
+        return CollectionUtils.isEmpty(result) ? Collections.emptyList() : result;
     }
 }

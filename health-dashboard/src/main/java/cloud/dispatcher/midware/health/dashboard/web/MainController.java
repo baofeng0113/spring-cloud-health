@@ -42,11 +42,12 @@ public class MainController {
         String selected = request.getParameter("service");
         List<String> serviceIdList = componentMetricsDiscovery.getServiceIdList();
         if (StringUtils.isBlank(selected) || !serviceIdList.contains(selected)) {
-            modelAndView.addObject("selected", serviceIdList.isEmpty() ? "" : serviceIdList.get(0));
-        } else {
-            modelAndView.addObject("selected", selected);
+            selected = serviceIdList.isEmpty() ? "" : serviceIdList.get(0);
         }
-        modelAndView.addObject("services", serviceIdList).setViewName("index");
+        modelAndView.addObject("services", serviceIdList).addObject("selected", selected);
+
+        modelAndView.addObject("instances", componentMetricsDiscovery.getInstanceList(selected));
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 }
