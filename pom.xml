@@ -17,7 +17,7 @@
 
     <modules>
         <module>health-dashboard</module>
-        <module>health-client</module>
+        <module>health-agent</module>
     </modules>
 
     <properties>

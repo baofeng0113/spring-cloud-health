@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import cloud.dispatcher.base.framework.entry.rest.RestDataResponse;
 import cloud.dispatcher.base.framework.entry.rest.RestMetaResponse;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDataQuery;
+import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDiscovery;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsTaxonomy;
 
 @RequestMapping("/api")
@@ -26,8 +27,16 @@ public class HealthController {
 
     @Autowired private ComponentMetricsDataQuery componentMetricsDataQuery;
 
-    private RestDataResponse newRestDataResponse(Object result) {
-        return new RestDataResponse(result, new RestMetaResponse(null, 200, ""));
+    @Autowired private ComponentMetricsDiscovery componentMetricsDiscovery;
+
+    @RequestMapping(value = "/servicesList", method = RequestMethod.GET)
+    public RestDataResponse servicesListAction() {
+        return newRestDataResponse(componentMetricsDiscovery.getServiceIdList());
+    }
+
+    @RequestMapping(value = "/instanceList", method = RequestMethod.GET)
+    public RestDataResponse instanceListAction(@RequestParam("service") String service) {
+        return newRestDataResponse(componentMetricsDiscovery.getInstanceList(service));
     }
 
     @RequestMapping(value = "/health", method = RequestMethod.GET)
@@ -40,6 +49,10 @@ public class HealthController {
 
         return CollectionUtils.isEmpty(originalMetricsInfo) ? newRestDataResponse(null) :
                 newRestDataResponse(componentMetricsTaxonomy.convert(originalMetricsInfo));
+    }
+
+    private RestDataResponse newRestDataResponse(Object result) {
+        return new RestDataResponse(result, new RestMetaResponse(null, 200, ""));
     }
 
     @Autowired private ComponentMetricsTaxonomy componentMetricsTaxonomy;
