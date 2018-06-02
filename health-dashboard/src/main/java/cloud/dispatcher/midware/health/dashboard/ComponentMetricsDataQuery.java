@@ -36,7 +36,7 @@ public class ComponentMetricsDataQuery {
         }
 
         Criteria criteria = new Criteria().andOperator(
-                Criteria.where(GlobalConfigValue.METRICS_APP_NAME_CONVERTED).is(name),
+                Criteria.where(GlobalConfigValue.METRICS_APP_NAME_CONVERTED).regex(name, "i"),
                 Criteria.where(GlobalConfigValue.METRICS_APP_HOST_CONVERTED).is(host),
                 Criteria.where(GlobalConfigValue.METRICS_APP_PORT_CONVERTED).is(port),
                 Criteria.where(GlobalConfigValue.METRICS_CREATE_TIME).gte(beginTimeMillis),
