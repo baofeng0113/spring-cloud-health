@@ -1,7 +1,6 @@
-package cloud.dispatcher.midware.health.client;
+package cloud.dispatcher.midware.health.agent;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

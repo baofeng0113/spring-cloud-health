@@ -1,4 +1,4 @@
-package cloud.dispatcher.midware.health.client;
+package cloud.dispatcher.midware.health.agent;
 
 import java.util.List;
 import java.util.Map;

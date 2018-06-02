@@ -1,4 +1,4 @@
-package cloud.dispatcher.midware.health.client;
+package cloud.dispatcher.midware.health.agent;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
