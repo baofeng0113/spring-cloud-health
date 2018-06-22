@@ -27,7 +27,7 @@ public class ControllerExceptionAdvice {
             text = MessageFormatter.arrayFormat(exception.getExceptionMessage().template,
                     exception.getParameter()).getMessage();
         }
-        return new RestDataResponse(new RestMetaResponse(null, code, text), null);
+        return new RestDataResponse(null, new RestMetaResponse(null, code, text));
     }
 
     @ExceptionHandler(value = Exception.class)
@@ -35,9 +35,9 @@ public class ControllerExceptionAdvice {
     public RestDataResponse exceptionHandle(Exception exception) {
         LOGGER.error(exception.getMessage(), exception);
         if (exception instanceof IllegalArgumentException || exception instanceof MissingServletRequestParameterException) {
-            return new RestDataResponse(new RestMetaResponse(null, 400, exception.getMessage()), null);
+            return new RestDataResponse(null, new RestMetaResponse(null, 400, exception.getMessage()));
         } else {
-            return new RestDataResponse(new RestMetaResponse(null, 500, "Internal error"), null);
+            return new RestDataResponse(null, new RestMetaResponse(null, 500, "Internal error"));
         }
     }
 }

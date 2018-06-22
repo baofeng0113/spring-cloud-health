@@ -1,4 +1,4 @@
-package cloud.dispatcher.midware.health.dashboard.web.api;
+package cloud.dispatcher.midware.health.dashboard.web;
 
 import java.util.List;
 
@@ -22,22 +22,22 @@ import cloud.dispatcher.midware.health.dashboard.ComponentMetricsDiscovery;
 import cloud.dispatcher.midware.health.dashboard.ComponentMetricsTaxonomy;
 import cloud.dispatcher.midware.health.dashboard.model.MetricsInstanceNodeResponse;
 
-@RequestMapping("/api")
+@RequestMapping("/general")
 @RestController
-public class HealthController {
+public class GeneralController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HealthController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeneralController.class);
 
     @Autowired private ComponentMetricsDataQuery componentMetricsDataQuery;
 
     @Autowired private ComponentMetricsDiscovery componentMetricsDiscovery;
 
-    @RequestMapping(value = "/servicesList", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/servicesList", method = RequestMethod.GET)
     public RestDataResponse servicesListAction() {
         return newRestDataResponse(componentMetricsDiscovery.getServiceIdList());
     }
 
-    @RequestMapping(value = "/instanceList", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/instanceList", method = RequestMethod.GET)
     public RestDataResponse instanceListAction(@RequestParam("service") String service) {
         List<ServiceInstance> instanceList = componentMetricsDiscovery.getInstanceList(service);
         List<MetricsInstanceNodeResponse> result = Lists.newArrayList();
@@ -48,11 +48,11 @@ public class HealthController {
         return newRestDataResponse(result);
     }
 
-    @RequestMapping(value = "/health", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/health", method = RequestMethod.GET)
     public RestDataResponse healthAction(@RequestParam("name") String name,
-            @RequestParam("host") String host, @RequestParam("port") int port,
-            @RequestParam("beginTimeMillis") long beginTimeMillis,
-            @RequestParam("closeTimeMillis") long closeTimeMillis) {
+             @RequestParam("host") String host, @RequestParam("port") int port,
+             @RequestParam("beginTimeMillis") long beginTimeMillis,
+             @RequestParam("closeTimeMillis") long closeTimeMillis) {
         List<JsonNode> originalMetricsInfo = componentMetricsDataQuery.getMetricsDataList(
                 name, host, port, beginTimeMillis, closeTimeMillis);
 

@@ -4,7 +4,7 @@ public final class GlobalConfigValue {
 
     private GlobalConfigValue() {}
 
-    public static final String REST_CONTROLLER_BASE_PACKAGE = "cloud.dispatcher.midware.health.dashboard.web.api";
+    public static final String REST_CONTROLLER_BASE_PACKAGE = "cloud.dispatcher.midware.health.dashboard.web";
 
     public static final String METRICS_APP_NAME = "application.name";
 
