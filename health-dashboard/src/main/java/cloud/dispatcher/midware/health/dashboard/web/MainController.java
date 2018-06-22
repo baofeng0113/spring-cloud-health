@@ -12,6 +12,6 @@ public class MainController {
 
     @RequestMapping({"/", "/index.html"})
     public String indexAction() {
-        return "redirect:/general/index.html";
+        return "redirect:/general/application.html";
     }
 }

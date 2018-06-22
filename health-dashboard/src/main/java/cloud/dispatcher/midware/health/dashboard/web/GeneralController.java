@@ -2,6 +2,7 @@ package cloud.dispatcher.midware.health.dashboard.web;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Lists;
@@ -31,6 +33,26 @@ public class GeneralController {
     @Autowired private ComponentMetricsDataQuery componentMetricsDataQuery;
 
     @Autowired private ComponentMetricsDiscovery componentMetricsDiscovery;
+
+    @RequestMapping("/application.html")
+    public ModelAndView applicationView(@RequestParam(value = "serviceId", required = false) String serviceId) {
+        ModelAndView modelAndView = new ModelAndView("application");
+        List<String> serviceIdList = componentMetricsDiscovery.getServiceIdList();
+        modelAndView.addObject("serviceIdList", serviceIdList);
+
+        serviceId = StringUtils.isNotBlank(serviceId) && serviceIdList.contains(
+                serviceId) ? serviceId : serviceIdList.get(0);
+
+        List<MetricsInstanceNodeResponse> instanceNodeList = Lists.newArrayList();
+        List<ServiceInstance> instances = componentMetricsDiscovery.getInstanceList(serviceId);
+        if (!CollectionUtils.isEmpty(instances)) {
+            instances.forEach(item -> instanceNodeList.add(new MetricsInstanceNodeResponse(
+                    item.getServiceId(), item.getPort(), item.getHost())));
+        }
+        modelAndView.addObject("instanceNodeList", instanceNodeList);
+
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/api/servicesList", method = RequestMethod.GET)
     public RestDataResponse servicesListAction() {
